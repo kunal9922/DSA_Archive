@@ -26,21 +26,20 @@ def detectCycleDirected(graph, v):
     
     return flag
 '''
-  0 -----> 1
-  |        |
-  |        |
-  v        v
-  4 -----> 3
-  |
-  v
-  2
+0 -------> 1 ----->2
+^          |       |
+|          |       |
+|          v       v
+4 <------- 3-----> 5
 '''
 # Directed graph represented as an adjacency list
-graph = [
-    [1],    # Vertex 0 is connected to vertex 1
-    [],     # Vertex 1 has no outgoing edges
-    [1, 3], # Vertex 2 is connected to vertices 1 and 3
-    [4],    # Vertex 3 is connected to vertex 4
-    [0, 2]  # Vertex 4 is connected to vertices 0 and 2
-]
-print(detectCycleDirected(graph, 5))
+graph = {
+    0: [1,],
+    1: [2, 3],
+    2: [5,],
+    3: [4, 5],
+    4: [0,],
+    5: []
+}
+
+print(detectCycleDirected(graph, 6))
